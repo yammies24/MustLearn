@@ -1,0 +1,31 @@
+package greeting;
+/**
+ *
+ * @author User
+ */
+import java.util.*;
+public class Greeting {
+    
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        PriorityQueue<String> nickname = new PriorityQueue<>();
+        String name;
+        System.out.println("Enter the nickname of 4 of your classmate:");
+        for(int n=1;n<=4;n++){
+            nickname.add(name = input.next());
+        }
+        System.out.println("Press H to say Hi to each of them:");
+        for(int n=0;n<=4;n++){
+            
+            String h = input.next();
+            if("H".equalsIgnoreCase(h)){
+            if(!nickname.isEmpty()){
+                System.out.println("Hi "+nickname.poll()); 
+            }
+            else if(nickname.isEmpty()){
+                System.out.println("Done saying Hi");
+            }
+            }
+        }
+    }    
+}
