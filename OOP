@@ -1,0 +1,62 @@
+import java.text.*;
+import java.util.*;
+
+public class LabExer1 {
+    private String itemName;
+    private double itemPrice=.00;
+    private int itemQuantity;
+    private double amountDue=.00;
+
+    public void setTotalCost(int quantity, double price) {
+        itemQuantity = quantity;
+        itemPrice = price;
+
+        amountDue = itemQuantity * itemPrice;
+    }
+    public double getTotalCost() {
+        return amountDue;
+    }
+    public void setItemName(String newItemName) {
+        itemName = newItemName;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void readInput() {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter the name of the item you are purchasing: ");
+        itemName = s.nextLine();
+        System.out.print("Enter the quantity and price separated by a space: ");
+        String input[] = s.nextLine().split(" ");
+        try {
+            itemQuantity = Integer.parseInt(input[0]);
+            itemPrice = Double.parseDouble(input[1]);
+            setTotalCost(itemQuantity, itemPrice);
+        } catch (Exception e) {
+            System.out.println("Invalid input");
+        }
+    }
+
+    public void writeInput() {
+        DecimalFormat df = new DecimalFormat("#.00");
+        if (itemQuantity > 1)
+    {
+        System.out.println("You are purchasing "+itemQuantity+" "+itemName+"s at "+df.format(itemPrice));
+    }
+    else if (itemQuantity == 1)
+    {
+        System.out.println("You are purchasing "+itemQuantity+" "+itemName+" at "+ df.format(itemPrice));
+    }
+        System.out.println("Amount due is: " + df.format(getTotalCost()));
+    }
+
+
+    public static void main(String[] args) {
+        LabExer1 Exer1 = new LabExer1();
+        Exer1.readInput();
+        Exer1.writeInput();
+    }
+}
